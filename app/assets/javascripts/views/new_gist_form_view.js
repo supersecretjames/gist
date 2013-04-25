@@ -15,7 +15,7 @@ GT.Views.NewGistFormView = Backbone.View.extend({
       that.addGistFileFormViews(gistFileFormViewsArray, newFormView);
     });
     var $mybutton = $('<button>Submit</button>');
-    $mybutton.addClass('submit');
+    $mybutton.addClass("submit");
     $mybutton.on('click', function(e) {
       _(gistFileFormViewsArray).each(function(gistFileFormView) {
         gistFileFormView.gistfileform().commit();
@@ -29,6 +29,16 @@ GT.Views.NewGistFormView = Backbone.View.extend({
       that.$el.append(gistFileFormView.render().$el);
     });
     that.$el.append($mybutton);
+    var $addGistFileButton = $('<button>Add File</button>');
+    $addGistFileButton.addClass("addFile");
+    $addGistFileButton.on('click', function(e){
+      var newGistFileFormView = that.createGistFileFormView();
+      gistFileFormViewsArray.push(newGistFileFormView);
+      that.$el.append(newGistFileFormView.render().$el);
+      that.$el.append($mybutton);
+      that.$el.append($addGistFileButton);
+    });
+    that.$el.append($addGistFileButton);
     return that;
   },
 
