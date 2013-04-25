@@ -15,7 +15,7 @@ class GistsController < ApplicationController
 
   def create
     @gist = Gist.new(params[:gist])
-    if(@gist.save)
+    if(@gist.save!)
       render json: @gist
     else
       render json: @gist.errors, status: 422

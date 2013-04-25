@@ -4,7 +4,7 @@ class Gist < ActiveRecord::Base
   validates :title, :user_id, presence: true
 
   belongs_to :user
-  has_many :favorites, :inverse_of => :gist
-  has_many :gist_files
+  has_many :favorites
+  has_many :gist_files, :inverse_of => :gist
   accepts_nested_attributes_for :gist_files
 end
