@@ -7,4 +7,14 @@ class FavoritesController < ApplicationController
     render json: @favorites
   end
 
+  def create
+    @favorite = Favorite.new(params[:favorite])
+
+    if @favorite.save!
+      render :json => @favorite
+    else
+      render :json => @favorite.errors, :status => 422
+    end
+  end
+
 end

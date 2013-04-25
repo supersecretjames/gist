@@ -26,6 +26,7 @@ GT.Routers.GistsRouter = Backbone.Router.extend({
     var GistDetailView = new GT.Views.GistDetailView({
       model: gist
     });
+    GistDetailView.initialize(that.user);
     that.$content.html(GistDetailView.render().$el);
   },
 
