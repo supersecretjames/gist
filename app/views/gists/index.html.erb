@@ -1,0 +1,25 @@
+<h1>All Your Gists</h1>
+
+
+<div id="buttontimes" style='float: left;'>
+  <a href="#">All Gists</a><br>
+  <a href ="#/favorites">Favorite Gists</a><br>
+  <a href ="#/form">Create New Gist</a>
+</div>
+<div id='sidebar' style='float: left;'></div>
+<div id='content' style='float: left;'></div>
+
+
+<script type="text/javascript">
+  $(function (){
+    var gists = <%=@gists.to_json.html_safe%>;
+    var user = <%=@current_user.to_json.html_safe%>;
+
+    window.GT.initialize(
+                        $('#sidebar'),
+                        $('#content'),
+                        gists,
+                        user
+                        );
+  });
+</script>
