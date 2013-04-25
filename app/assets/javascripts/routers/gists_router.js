@@ -39,19 +39,12 @@ GT.Routers.GistsRouter = Backbone.Router.extend({
   form: function() {
     var that = this;
     var gist = new GT.Models.Gist();
-    var userForm = new Backbone.Form({
+    var NewGistFormView = new GT.Views.NewGistFormView({
       model: gist
-    }).render();
-    var $mybutton = $('<button>Submit</button>');
-    $mybutton.addClass('submit');
-    $mybutton.on('click', function(e) {
-      userForm.commit();
-      gist.set("user_id", that.user.escape('id'));
-      console.log(gist.attributes);
-      gist.save();
     });
-    that.$content.html(userForm.el).append($mybutton);
+    NewGistFormView.initialize(that.user);
 
+    that.$content.html(NewGistFormView.render().$el);
   }
 
 })
