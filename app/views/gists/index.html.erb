@@ -14,12 +14,14 @@
   $(function (){
     var gists = <%=@gists.to_json.html_safe%>;
     var user = <%=@current_user.to_json.html_safe%>;
+    var favorites = <%=@favorites.to_json.html_safe%>;
 
     window.GT.initialize(
                         $('#sidebar'),
                         $('#content'),
                         gists,
-                        user
+                        user,
+                        favorites
                         );
   });
 </script>

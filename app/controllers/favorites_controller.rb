@@ -17,4 +17,14 @@ class FavoritesController < ApplicationController
     end
   end
 
+  def destroy
+    @favorite = Favorite.find(params[:id])
+
+    if @favorite.destroy
+      render :json => @favorite
+    else
+      render :json => @favorite, status: 422
+    end
+  end
+
 end

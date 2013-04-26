@@ -6,6 +6,7 @@ class GistsController < ApplicationController
 
   def index
     @gists = Gist.where("user_id == #{current_user.id}")
+    @favorites = Favorite.where("user_id == #{current_user.id}")
     @current_user = current_user
     respond_to do |format|
       format.html { render :index }

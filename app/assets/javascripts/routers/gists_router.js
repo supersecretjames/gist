@@ -6,11 +6,12 @@ GT.Routers.GistsRouter = Backbone.Router.extend({
     "form": "form"
   },
 
-  initialize: function($sidebar, $content, gists, user) {
+  initialize: function($sidebar, $content, gists, user, favorites) {
     this.gists = gists;
     this.$content = $($content);
     this.$sidebar = $($sidebar);
     this.user = user;
+    this.favorites = favorites;
   },
 
   index: function(){
@@ -26,7 +27,7 @@ GT.Routers.GistsRouter = Backbone.Router.extend({
     var GistDetailView = new GT.Views.GistDetailView({
       model: gist
     });
-    GistDetailView.initialize(that.user);
+    GistDetailView.initialize(that.user, that.favorites);
     that.$content.html(GistDetailView.render().$el);
   },
 
